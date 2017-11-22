@@ -1,0 +1,18 @@
+<h2>Log in to your account</h2>
+
+<!-- log in failure message-->
+<ul>
+	{{#each messages}}
+		<li>{{this}}</li>
+	{{/each}}
+</ul>
+
+	<form method="POST" action="/login">
+		Username: <input name="username"/>
+		Password: <input type="password" name="password"/>
+		
+		<input type="submit" value="Sign In"
+	</form>
+	
+	<p>If you don't have an account, you can
+		<a href="/signup">Sign Up Here</a>
