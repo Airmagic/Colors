@@ -3,25 +3,33 @@ var LocalStrategy = require('passport-local');
 var User = require('../models/user');
 
 /*
+
  Note the done() method, which has various signatures.
+
  done(app_err, user_err_or_success, messages);
  done(err);
+
  means there's been a DB or app error - this is not typical.
  Use to indicates issue with DB or infrastructure or something YOU need to fix.
+
  done(null, false);
  first parameter is for app error - it's null because this is a *user* error.
  Second parameter is false to indicate USER error in login. e.g. wrong password,
  wrong username, trying to sign up with username that already exists...
  Very common issue, your app will decide how to deal with this.
+
  done(null, false, msg);
  As before, plus msg parameter to provide error message that app may display to user
+
  done(null, user);
  Success! null=no app error,
  user = new user object created, or authenticated user object
+
  done(null, user, msg);
  Variation of the previous call. null=no app error,
  user = new user or authenticated user object,
  msg=messages for app to display to user
+
  */
 
 

@@ -1,18 +1,19 @@
-<h2>Log in to your account</h2>
+<h1>Top secret website</h1>
 
-<!-- log in failure message-->
+<h2>Please log in here</h2>
+
 <ul>
-	{{#each messages}}
-		<li>{{this}}</li>
-	{{/each}}
+  {{#each messages}}
+    <li>{{this}}</li>
+  {{/each}}
 </ul>
 
-	<form method="POST" action="/login">
-		Username: <input name="username"/>
-		Password: <input type="password" name="password"/>
-		
-		<input type="submit" value="Sign In"
-	</form>
-	
-	<p>If you don't have an account, you can
-		<a href="/signup">Sign Up Here</a>
+<form action="/login" method="POST">
+  Username: <input type="text" name="username" required>
+  <br>
+  Password: <input type="password" name="password" required>
+  <br>
+  <input type="submit" name="login" value="Log in">
+</form>
+
+<P>If you don't have an account, you can <a href="/signup">sign up here</a>.</P>
