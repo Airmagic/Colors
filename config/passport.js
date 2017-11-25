@@ -117,12 +117,16 @@ module.exports = function(passport) {
     });
   }));
 
+  
+  //this is the passport to access twitter when using twitter to sign in
   passport.use(new TwitterStrategy({
 	  consumerKey: configAuth.twitterAuth.consumerKey,
 	  consumerSecret: configAuth.twitterAuth.consumerSecret,
 	  callbackUrl: configAuth.twitterAuth.callbackUrl
   }, function(token, tokenSecret, profile, done){
 	  process.nextTick(function(){
+		  
+		  //this is to find the user on twitter
 		  User.findOne( { 'twitter.id' : profile.id }, function (err,user){
 			  
 			  if (err) {return done(err); }//if a db error

@@ -1,3 +1,5 @@
+
+{{!-- login webpage --}}
 <h1>Secret website</h1>
 
 <h2>Please log in here</h2>
@@ -8,6 +10,7 @@
   {{/each}}
 </ul>
 
+{{!-- this is to login in if you have a user with just the db --}}
 <form method="POST" action="/login">
   Username: <input type="text" name="username" required>
   <br>
@@ -16,10 +19,12 @@
   <input type="submit" name="login" value="Log in">
 </form>
 
+{{!-- A link to create a user account --}}
 <p>If you don't have an account, you can 
 	<a href="/signup">Sign up here</a>
 </p>
 
+{{!-- to log in with twitter --}}
 <h2>Log in with Twitter</h2>
 
 <p>Or you can <a href='/auth/twitter'>use your twitter account to sign in</a></p>

@@ -1,3 +1,5 @@
+
+/* setting the variables for twitter access */
 module.exports = {
 	twitterAuth: {
 	consumerKey: process.env.TWITTER_CONSUMER_KEY,

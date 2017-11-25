@@ -16,6 +16,7 @@ var users = require('./routes/users');
 
 var app = express();
 
+//accessing the db and assigned the varible to the location of the db
 var mongo_url = process.env.MONGO_URLCOLOR;
 mongoose.Promise = global.Promise;
 mongoose.connect(mongo_url, { useMongoClient:true })
@@ -34,11 +35,13 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
+//access the mongodb store
 var store = new MongoDBStore( {uri : mongo_url, collection: 'session'}, function(err){
 	if (err) {
 		console.log('Error, can\'t connect to MongoDB to store sessions', err);
 	}
 })
+
 
 app.use(session({
   secret: 'replace me with long random string',
@@ -47,7 +50,7 @@ app.use(session({
   store: store
 }));
 
-
+//using passport to check passwords
 app.use(passport.initialize());
 app.use(passport.session());         // This creates an req.user variable for logged in users.
 app.use(flash());
