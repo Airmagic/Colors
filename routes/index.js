@@ -58,7 +58,9 @@ router.get('/logout', function(req, res, next) {
 
 /* GET secret page. Note isLoggedIn middleware - verify if user is logged in */
 router.get('/secret', isLoggedIn, function(req, res, next) {
-  res.render('secret', { username : req.user.local.username,
+  res.render('secret', { 
+	username : req.user.local.username,
+	twitterName: req.user.twitter.displayName,
     signupDate: req.user.signupDate,
     favorites: req.user.favorites });
 });
@@ -117,6 +119,15 @@ function isLoggedIn(req, res, next) {
   }
   res.redirect('/login');
 }
+
+/* get twitter authenticate. call passport authenticate method to redirect */
+router.get('/auth/twitter',passport.authenticate('twitter'));
+
+/* get respond from twitter. twitter will request this route */
+router.get('/auth/twitter/callback', passport.authenticate('twitter', {
+	successRedirect: '/secret',
+	failureRedirect: '/'
+}));
 
 
 module.exports = router;
