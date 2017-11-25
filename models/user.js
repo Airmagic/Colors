@@ -1,12 +1,14 @@
 var mongoose = require('mongoose');
 var bcrypt = require('bcrypt-nodejs');
 
+/* user schema for the db */
 var userSchema = mongoose.Schema({
   local : {
     username: String,
     password: String
   },
   
+  /* twitter schema */
   twitter : {
 	id: String,
 	token: String,
@@ -14,8 +16,10 @@ var userSchema = mongoose.Schema({
 	username: String
   },
 
+  /* Adding the sign up date */
   signupDate : { type: Date, default: Date.now() },
 
+  /* adding the favorites things */
   favorites : {
     color: String,
     luckyNumber: Number
